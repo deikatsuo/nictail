@@ -26,7 +26,6 @@ Abstract Class App {
 	private function prepare() {
 		$asset=$this->container->get('app.asset-manager');
 		$asset->add(['pure.css','jquery-2.2.3.min.js']);
-		$asset->addTo('register',['pure.css','jquery-2.2.3.min.js']);
 
 		// Prepare
 		$render=[
