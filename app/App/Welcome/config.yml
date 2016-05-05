@@ -1,0 +1,8 @@
+routes:
+    welcome:
+        path: /
+        defaults: {_controller: App\Welcome\Welcome::index}
+
+services:
+    app.welcome:
+        class: App\Welcome\Welcome

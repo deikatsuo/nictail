@@ -1,0 +1,4 @@
+routes:
+    register:
+        path: /register
+        defaults: { _controller: 'App\Register\Register::index' }

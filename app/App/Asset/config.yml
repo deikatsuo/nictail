@@ -1,0 +1,7 @@
+routes:
+    asset:
+        path: /asset
+        defaults: { _controller: 'App\Asset\Asset::index' }
+services:
+    app.asset-manager:
+        class: App\Asset\Manager
