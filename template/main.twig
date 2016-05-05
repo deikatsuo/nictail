@@ -1,0 +1,20 @@
+<html>
+<head>
+	{% block head %}
+		<title>{% block title %}{% endblock %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{{ head_asset|raw }}
+		{% block stylesheet %}{% endblock %}
+		{% block javascript %}{% endblock %}
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+		{% block navbar %}
+			{% include 'navbar.twig' %}
+		{% endblock %}
+		{% block left_menu %}{% endblock %}
+		{% block content %}{% endblock %}
+	{% endblock %}
+</body>
+</html>
