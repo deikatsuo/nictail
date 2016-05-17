@@ -1,2 +1,126 @@
 {% extends 'main.twig' %}
 {% block title %}{{ title }}{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<div class="section">
+    				<h5>{{ title }}</h5>
+    				<p>Sebelum mendaftar, harap pengguna telah menyetujui ketentuan yang berlaku</p>
+ 				</div>
+  				<div class="divider"></div>
+			</div>
+
+			<div class="row"></div>
+
+			<div class="col s12">
+			<form action="#">
+
+				<div class="input-field col s6">
+			        <input id="first_name" type="text" class="validate" length="12">
+			        <label for="first_name">Nama Depan</label>
+	        	</div>
+	        	<div class="input-field col s6">
+			        <input id="last_name" type="text" class="validate" length="24">
+			        <label for="last_name">Nama Belakang</label>
+    			</div>
+
+				<div class="input-field col s12">
+			        <input id="email" type="email" class="validate">
+			        <label for="email" data-error="Format Salah">Email</label>
+    			</div>
+
+				<div class="input-field col s12 m6">
+				    <select class="icons">
+					    <option value="" disabled selected>Pilih Jenis Kelamin</option>
+					    <option value="" data-icon="/asset?source=male.png" class="left">Laki-Laki</option>
+					    <option value="" data-icon="/asset?source=female.png" class="left">Perempuan</option>
+				    </select>
+					<label>Saya Seorang</label>
+					</div>
+				<div class="input-field col s6">
+					<select id="country">
+						<option value="" disabled selected>Pilih negaramu</option>				
+					 		{% set country_name=country.listCountryName() %}
+							{% set country_code=country.listCountryCode() %}
+							{% for i in 2..country_name|length %}
+								{% if vCountryIso == country_code[loop.index] %}
+									<option value='{{ country_code[loop.index] }}' selected>{{ country_name[loop.index] }}</option>
+								{% else %}
+									<option value='{{ country_code[loop.index] }}'>{{ country_name[loop.index] }}</option>
+								{% endif %}
+							{% endfor %}
+					</select>
+					<label>Saya Tinggal Di</label>
+				</div>
+
+				<div class="input-field col s4">
+					<select id="year">
+						<option value="" disabled selected>Tahun</option>
+						{% for i in range(1950,2016) %}
+							<option value='{{ i }}'>{{ i }}</option>
+						{% endfor %}
+					</select>
+					<label>Saya Lahir Pada</label>
+				</div>
+				<div class="input-field col s4">
+					{% set month=[
+						"Januari",
+						"Februari",
+						"Maret",
+						"April",
+						"Mei",
+						"Juni",
+						"Juli",
+						"Agustus",
+						"September",
+						"Oktober",
+						"Nopember",
+						"Desember"
+					] %}
+					<select id="month">
+						<option value="" disabled selected>Bulan</option>
+						{% for i in month %}
+							<option value='{{ loop.index }}'>{{ i }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="input-field col s4">
+					<select id="day">
+						<option value="" disabled selected>Tanggal</option>
+						{% for i in 1..31 %}
+							<option value='{{ i }}'>{{ i }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="input-field col s6">
+			        <input id="password" type="password" class="validate" length="16">
+			        <label for="password">Kata Sandi</label>
+	        	</div>
+	        	<div class="input-field col s6">
+			        <input id="repassword" type="password" class="validate" length="16">
+			        <label for="repassword">Ulangi Kata Sandi</label>
+    			</div>
+
+				<div class="input-field col s12">
+					<div class="card-panel teal">
+						<span class="white-text">
+							Dengan mengeklik Mendaftar, Anda menyetujui Ketentuan kami dan bahwa Anda telah membaca Kebijakan Data kami, termasuk Penggunaan Kuki.
+						</span>
+					</div>
+				</div>
+
+				<div class="input-field col s12">
+					<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+	    				<i class="material-icons right">send</i>
+	 				</button>
+	 			</div>
+
+			</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+				
