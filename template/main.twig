@@ -4,17 +4,24 @@
 		<title>{% block title %}{% endblock %}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		{{ head_asset|raw }}
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 		{% block stylesheet %}{% endblock %}
 		{% block javascript %}{% endblock %}
 	{% endblock %}
 </head>
 <body>
 	{% block body %}
-		{% block navbar %}
-			{% include 'navbar.twig' %}
+		{% block header %}
+			<header>
+				{% block left_menu %}
+					{% include 'left_menu.twig' %}
+				{% endblock %}
+			</header>
 		{% endblock %}
-		{% block left_menu %}{% endblock %}
-		{% block content %}{% endblock %}
+		<div class="content">
+			{% block content %}{% endblock %}
+		</div>
 	{% endblock %}
 </body>
 </html>
