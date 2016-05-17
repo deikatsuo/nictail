@@ -8,7 +8,7 @@ Class Manager {
 		$this->source=$source;
 	}
 
-	public function add($source) {
+	public function add($source=[]) {
 		$this->source=array_merge($source,$this->source);
 	}
 
@@ -26,7 +26,7 @@ Class Manager {
 		$host=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'];
 		for($i=0;$i<count($this->source);$i++) {
 			if(strrchr($this->source[$i], '.') == '.css') {
-				$readycss=$readycss."<link rel='stylesheet' href='".$host."/asset?source=".$this->source[$i]."'>\n";
+				$readycss=$readycss."<link rel='stylesheet' type='text/css' href='".$host."/asset?source=".$this->source[$i]."'>\n";
 			}
 			if(strrchr($this->source[$i], '.') == '.js') {
 				$readyjs=$readyjs."<script type='text/javascript' src='".$host."/asset?source=".$this->source[$i]."'></script>\n";
@@ -35,7 +35,7 @@ Class Manager {
 		foreach($this->source_from_app as $a => $b) {;
 			for($i=0;$i<count($b);$i++) {
 				if(strrchr($b[$i], '.') == '.css') {
-					$readycss=$readycss."<link rel='stylesheet' href='".$host."/asset?source=".$b[$i]."&app=".$a."'>\n";
+					$readycss=$readycss."<link rel='stylesheet' type='text/css' href='".$host."/asset?source=".$b[$i]."&app=".$a."'>\n";
 				}
 				if(strrchr($b[$i], '.') == '.js') {
 					$readyjs=$readyjs."<script type='text/javascript' src='".$host."/asset?source=".$b[$i]."&app=".$a."'></script>\n";
