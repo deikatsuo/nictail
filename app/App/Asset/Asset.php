@@ -20,16 +20,21 @@ Class Asset {
 		return $this;
 	}
 	public function readfile() {
-		$finder=$this->container->get('symfony.finder');
 		$fsystem=$this->container->get('symfony.filesystem');
-		if($fsystem->exists($this->path)) {
-			$finder->files()->in($this->path)->name($this->file_name);
-			foreach ($finder as $file) {
-				$this->content=nl2br($file->getContents());
-			}
+		if($fsystem->exists($this->path.'/'.$this->file_name)) {
+			$this->content=file_get_contents($this->path.'/'.$this->file_name);
 		}
 	}
 	public function show() {
+		if(strrchr($this->file_name, '.') == '.css') {
+			header("Content-type: text/css");
+		}
+		if(strrchr($this->file_name, '.') == '.js') {
+			header("Content-Type: application/javascript");
+		}
+		if(strrchr($this->file_name, '.') == '.png') {
+			header("Content-Type: image/png");
+		}
 		return new Response($this->content);
 	}
 }
