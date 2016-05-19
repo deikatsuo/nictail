@@ -14,13 +14,20 @@
 	{% block body %}
 		{% block header %}
 			<header>
+			{% block navbar %}
+				{% include 'navbar.twig' %}
+			{% endblock %}
+			</header>
+		{% endblock %}
+		<div class="row content">
+			<div class="col s12 m4 l3">
 				{% block left_menu %}
 					{% include 'left_menu.twig' %}
 				{% endblock %}
-			</header>
-		{% endblock %}
-		<div class="content">
-			{% block content %}{% endblock %}
+			</div>
+			<div class="col s12 m8 l9">
+				{% block content %}{% endblock %}
+			</div>
 		</div>
 	{% endblock %}
 </body>

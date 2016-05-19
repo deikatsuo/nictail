@@ -1,17 +1,11 @@
 $(document).ready(function(){
-    $(".button-collapse").sideNav();
-    $(".left-menu-toggle").click(function(){
-    	var left=$('.left-menu-toggle').css('left');
-    	if(left == '0px') {
-    		$(this).css('left','+=310');
-    		$('.left-menu-toggle .material-icons').html('done');
-    		$('.left-menu').removeClass('hide-on-med-and-down');
-    	}
-    	else {
-    		$(this).css('left','-=310');
-    		$('.left-menu-toggle .material-icons').html('menu');
-    		$('.left-menu').addClass('hide-on-med-and-down');
-    	}
+	$('.dropdown-button').dropdown({
+		inDuration: 300,
+		outDuration: 225,
+		constrain_width: false, // Does not change width of dropdown to that of the activator
+		hover: false, // Activate on hover
+		gutter: -15, // Spacing from edge
+		belowOrigin: true, // Displays dropdown below the button
+		alignment: 'right' // Displays dropdown with edge aligned to the left of button
     });
-    $('select').material_select();
 });

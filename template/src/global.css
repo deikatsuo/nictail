@@ -1,25 +1,15 @@
+html, body {margin:0;padding:0;height:100%;}
+body {background-color: #F9F9F9 !important;}
+
+.navmenu-content {
+	width: 300px;
+}
 .content {
-	padding-left: 310px;
-}
-.left-menu {
-	width: 310px;
-	top: 0;
-	margin: 0;
-	left: 0;
-	position: fixed;
+	margin-bottom: 0 !important;
+	background-color: inherit;
 	height: 100%;
-	z-index: 999;
-}
-.left-menu-toggle {
-	width: 38px;
-	left: 0;
-	padding: 5px;
-	position: fixed;
-	z-index: 998;
 }
 
 @media only screen and (max-width: 992px) {
-	.content {
-		padding-left: 0;
-	}
+	
 }

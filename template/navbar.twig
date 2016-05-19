@@ -1,3 +1,36 @@
-<nav>
-
-</nav>
+<div class="navbar-fixed">
+	<nav class="light-blue accent-2">
+		<div class="nav-wrapper">
+			<ul class="left hide-on-small-only">
+				<li>
+					<a href="#" class="">
+						<img src="/asset?source=nictail.png" alt="logo" />
+					</a>
+				</li>
+			</ul>
+			<ul class="right">
+				{{ place_before_navbar_menu|raw }}
+		        <li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
+		        <li><a href="#"><i class="material-icons">email</i></a></li>
+		        <li>
+		        	<a href="#"><i class="material-icons dropdown-button" data-activates="navmenu-notification">notifications</i></a>
+		        	<ul class="dropdown-content navmenu-content" id="navmenu-notification">
+			        	<li><a href="#!">one | satu</a></li>
+					    <li><a href="#!">two</a></li>
+					    <li class="divider"></li>
+					    <li><a href="#!">three</a></li>
+				    </ul>
+		        </li>
+		        <li>
+		        	<a href="#"><i class="material-icons dropdown-button" data-activates="navmenu-settings">settings</i></a>
+		        	<ul class="dropdown-content navmenu-content" id="navmenu-settings">
+			        	<li><a href="#!">one</a></li>
+					    <li><a href="#!">two</a></li>
+					    <li class="divider"></li>
+					    <li><a href="#!">three</a></li>
+					</ul>
+		        </li>
+			</ul>
+		</div>
+	</nav>
+</div>
