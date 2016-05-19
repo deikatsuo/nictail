@@ -6,9 +6,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 Abstract Class App {
 	public $container=[];
-	public $place=[
-		'place_after_menu_navbar'		=> '',
-		'place_after_left_menu'			=> ''
+	public $extends=[
+		'place_before_navbar_menu'			=> '',
+		'place_before_left_menu'			=> ''
 	];
 	protected $current_app;
 	protected $render_merge=[];
@@ -34,7 +34,7 @@ Abstract Class App {
 		$render=[
 			'head_asset'	=>	$this->container->get('app.asset-manager')->load()
 		];
-		return array_merge($this->place,$render,$this->render);
+		return array_merge($this->extends,$render,$this->render);
 	}
 
 	abstract function config();
