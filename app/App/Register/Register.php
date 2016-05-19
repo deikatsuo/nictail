@@ -23,7 +23,7 @@ Class Register Extends App {
 			'country'		=> new \System\Core\Country(),
 			'vCountryIso'	=> $vCountryIso
 		];
-		$this->container->get('app.asset-manager')->addTo('Register',['register.js']);
+		$this->container->get('app.asset-manager')->addTo('Register',['register.css','register.js','jquery.validate.min.js','jquery.formatter.min.js']);
 		return $this;
 	}
 
