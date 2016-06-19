@@ -28,7 +28,7 @@ Abstract Class App {
 
 	# @Return array
 	private function prepare() {
-		$this->container->get('app.asset-manager')->add(['global.css','materialize.min.css','jquery-2.2.3.min.js','materialize.min.js','global.js']);
+		$this->container->get('app.asset-manager')->add(['global.css','/uikit/css/uikit.min.css','jquery-2.2.3.min.js','/uikit/js/uikit.min.js','global.js']);
 
 		// Prepare
 		$render=[
