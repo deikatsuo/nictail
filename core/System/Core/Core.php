@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Routing\RouteCollection;
+use App\PageEvent\PageEvent;
 
 
 Class Core {
@@ -57,11 +58,10 @@ Class Core {
 			
             return call_user_func_array($controller, $arguments);
 		}
-		catch (Routing\Exception\ResourceNotFoundException $e) {
-			$response = new Response('Not Found', 404);
-		} 
-		catch (Exception $e) {
-			$response = new Response('An error occurred', 500);
+		catch (\Exception $e) {
+			$event=new PageEvent($e);
+			$event->container=$container;
+			return $event->index();
 		}
 	}
 }
