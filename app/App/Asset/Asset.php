@@ -24,6 +24,7 @@ Class Asset {
 		if($fsystem->exists($this->path.'/'.$this->file_name)) {
 			$this->content=file_get_contents($this->path.'/'.$this->file_name);
 		}
+		$file=$this->path.'/'.$this->file_name;
 	}
 	public function show() {
 		if(strrchr($this->file_name, '.') == '.css') {
