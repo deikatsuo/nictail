@@ -7,7 +7,8 @@ Use GeoIp2\Database\Reader;
 
 Class Register Extends App {
 	public $render=[];
-	public function index() {
+	public $current_template='register.twig';
+	public function indexPage() {
 		$vCountryIso="";
 		try {
 			$readIp=new Reader(_root."/GeoLite2-Country.mmdb");
@@ -23,14 +24,24 @@ Class Register Extends App {
 			'country'		=> new \System\Core\Country(),
 			'vCountryIso'	=> $vCountryIso
 		];
-		$this->container->get('app.asset-manager')->addTo('Register',['register.css','register.js','jquery.validate.min.js','jquery.formatter.min.js']);
+		$this->container->get('app.asset-manager')->addTo('Register',['register.css','register.js']);
+		$this->container->get('app.asset-manager')->add(['/uikit/css/components/datepicker.almost-flat.min.css','/uikit/js/components/datepicker.min.js']);
+		return $this;
+	}
+
+	public function loginPage() {
+		$this->current_template="login.twig";
+		$this->render=[
+			'title'			=> 'Masuk akun'
+		];
+		$this->container->get('app.asset-manager')->addTo('Register',['register.css']);
 		return $this;
 	}
 
 	public function config() {
 		return [
 			'path'		=>	__DIR__,
-			'template'	=>	'register.twig'
+			'template'	=>	$this->current_template
 		];
 	}
 

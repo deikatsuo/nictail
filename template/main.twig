@@ -4,8 +4,6 @@
 		<title>{% block title %}{% endblock %}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		{{ head_asset|raw }}
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
 		{% block stylesheet %}{% endblock %}
 		{% block javascript %}{% endblock %}
 	{% endblock %}
@@ -19,13 +17,11 @@
 			{% endblock %}
 			</header>
 		{% endblock %}
-		<div class="row content">
-			<div class="col s12 m4 l3">
+		<div class="uk-container uk-container-center content">
+			<div class="uk-grid">
 				{% block left_menu %}
 					{% include 'left_menu.twig' %}
 				{% endblock %}
-			</div>
-			<div class="col s12 m8 l9">
 				{% block content %}{% endblock %}
 			</div>
 		</div>
