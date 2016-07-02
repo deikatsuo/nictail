@@ -1,6 +1,7 @@
 <?php
 namespace App\Register;
 
+use Symfony\Component\HttpFoundation\Request;
 use System\Core\App;
 use System\Core\Country;
 Use GeoIp2\Database\Reader;
@@ -8,6 +9,8 @@ Use GeoIp2\Database\Reader;
 Class Register Extends App {
 	public $render=[];
 	public $current_template='register.twig';
+
+	//-- Main Page --//
 	public function indexPage() {
 		$vCountryIso="";
 		try {
@@ -29,12 +32,23 @@ Class Register Extends App {
 		return $this;
 	}
 
+	//-- Login Page --//
 	public function loginPage() {
 		$this->current_template="login.twig";
 		$this->render=[
 			'title'			=> 'Masuk akun'
 		];
 		$this->container->get('app.asset-manager')->addTo('Register',['register.css']);
+		return $this;
+	}
+
+	//-- Action Page --//
+	public function actionPage() {
+		$this->current_template="blank.twig";
+		$process=$this->container->get('app.register-process');
+		$this->render=[
+			'data'		=> 'adalah...'
+		];
 		return $this;
 	}
 

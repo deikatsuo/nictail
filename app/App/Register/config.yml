@@ -8,3 +8,10 @@ routes:
     forgot:
         path: /register/forgot
         defaults: { _controller: 'App\Register\Register::forgotPage'}
+    action:
+        path: /register/action/a
+        defaults:
+            _controller: 'App\Register\Register::actionPage'
+services:
+    app.register-process:
+        class: App\Register\Process

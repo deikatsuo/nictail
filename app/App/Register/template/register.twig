@@ -5,7 +5,7 @@
 	<div class="uk-width-medium-4-10">
 		<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-secondary">
 			<h3 class="uk-panel-title">{{ title }}</h3>
-			<form class="uk-form uk-form-stacked">
+			<form class="uk-form uk-form-stacked" id="reg_form" action="/register/action" method="post">
 			<div class="uk-form-row">
 				<label class="uk-form-label" for="first_name">Nama</label>
 				<div class="uk-form-controls">
@@ -13,7 +13,7 @@
 	        			<div class="uk-width-medium-1-2 uk-width-small-1-1">
 	        				<div class="uk-form-icon fix-iconform">
 	        					<i class="uk-icon-user"></i>
-	        					<input type="text" placeholder="Depan" class="uk-width-1-1" id="first_name">
+	        					<input type="text" placeholder="Depan" class="uk-width-1-1" id="first_name" name="first_name">
 	        				</div>
 	        			</div>
 	        			<div class="uk-width-medium-1-2 uk-width-small-1-1">
@@ -64,7 +64,7 @@
 						<div class="uk-width-1-1">
 							<div class="uk-form-icon fix-iconform">
 								<i class="uk-icon-calendar"></i>
-								<input type="text" placeholder="00-00-000" class="uk-width-1-1" id="birthday" data-uk-datepicker="{format:'DD-MM-YYYY'}">
+								<input type="text" placeholder="00-00-0000" class="uk-width-1-1" id="birthday" data-uk-datepicker="{format:'DD-MM-YYYY'}">
 							</div>
 						</div>
 					</div>
@@ -116,7 +116,7 @@
 			</div>
 			<div class="uk-form-row">
 				<div class="uk-form-controls">
-					<button class="uk-button uk-button-large uk-button-success uk-align-center" type="button">
+					<button class="uk-button uk-button-large uk-button-success uk-align-center" type="submit">
 						<i class="uk-icon-save"></i>
 						Mendaftar
 					</button>
