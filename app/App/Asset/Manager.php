@@ -4,8 +4,8 @@ namespace App\Asset;
 Class Manager {
 	protected $source=[];
 	protected $source_from_app=[];
-	public function __construct($source=[]) {
-		$this->source=$source;
+	public function __construct() {
+		//--
 	}
 
 	public function add($source=[]) {
