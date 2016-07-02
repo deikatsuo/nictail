@@ -25,7 +25,6 @@ $coreName=[
 $coreAuto->addPrefixes($coreName);
 $coreAuto->register();
 
-
 $request=Request::createFromGlobals();
 $container = new ContainerBuilder();
 $appInit=new AppInit($container, _root.'/app');

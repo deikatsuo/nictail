@@ -32,7 +32,7 @@ Class Core {
 		$this->container->setParameter('template_dir',_root.'/template');
 		$this->container->compile();
 		$container=$this->container;
-		
+
 		// handler
 		$this->matcher=$container->get('symfony.matcher');
 		$this->resolver=$container->get('symfony.resolver');
@@ -46,6 +46,7 @@ Class Core {
 			$request->attributes->add($this->matcher->match($path));
             $controller = $this->resolver->getController($request);
             $arguments = $this->resolver->getArguments($request, $controller);
+
             $config=[
 				'container'	=> $container,
             ];
@@ -55,7 +56,6 @@ Class Core {
 					$controller[0]->$key[$i]=$config[$key[$i]];
 				}
 			}
-			
             return call_user_func_array($controller, $arguments);
 		}
 		catch (\Exception $e) {
