@@ -1,3 +1,5 @@
 body {background-color: #F9F9F9 !important;}
 .navbar {background-color: #3498db !important;padding:5px;}
 .content {margin-top:40px;padding-bottom:50px !important;}
+
+#top_notification {margin-bottom: 0px !important;display:none;}
