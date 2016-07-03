@@ -260,7 +260,7 @@ Class Country {
 	public function listCountryName() {
 		$country_name=array();
 		$data=$this->country;
-		for($l=0;$l<=count($data)-1;$l++) {
+		for($l=0;$l<count($data);$l++) {
 			$country_exp=explode("|",$data[$l]);
 			$country_name=array_merge($country_name,array($country_exp[1]));
 		}
@@ -271,7 +271,7 @@ Class Country {
 	public function listCountryCode() {
 		$country_code=array();
 		$data=$this->country;
-		for($l=0;$l<=count($data)-1;$l++) {
+		for($l=0;$l<count($data);$l++) {
 			$country_exp=explode("|",$data[$l]);
 			$country_code=array_merge($country_code,array($country_exp[0]));
 		}
@@ -284,11 +284,11 @@ Class Country {
 		if(!empty($id)) {
 			$cn='';
 			$newcountry=[];
-			for($l=0;$l<count($this->country)-1;$l++) {
+			for($l=0;$l<count($this->country);$l++) {
 				$country=explode('|',$this->country[$l]);
 				$newcountry=array_merge($newcountry,[$country[0] => $country[1]]);
 			}
-			if(array_search($id,$this->listCountryCode())) {
+			if(in_array($id,$this->listCountryCode())) {
 				return $newcountry[$id];
 			}
 		}

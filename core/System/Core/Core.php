@@ -30,7 +30,7 @@ Class Core {
 	public function handle(RouteCollection $routes, Request $request) {
 		$this->container->setParameter('routes',$routes);
 		$this->container->setParameter('template_dir',_root.'/template');
-		$this->container->compile();
+		// $this->container->compile();
 		$container=$this->container;
 
 		// handler
