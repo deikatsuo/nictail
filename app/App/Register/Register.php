@@ -44,11 +44,11 @@ Class Register Extends App {
 
 	//-- Action Page --//
 	public function processPage(Request $request) {
-		print_r($request);
 		$this->current_template="blank.twig";
 		$process=$this->container->get('app.register-process');
+		$process->request($request->request->all());
 		$this->render=[
-			'data'		=> 'adalah...'
+			'data'		=> $process->result()
 		];
 		return $this;
 	}
