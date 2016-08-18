@@ -4,6 +4,7 @@ namespace App\Asset;
 Class Manager {
 	protected $source=[];
 	protected $source_from_app=[];
+	protected $css,$js;
 	public function __construct() {
 		//--
 	}
@@ -12,7 +13,7 @@ Class Manager {
 		$this->source=array_merge($source,$this->source);
 	}
 
-	public function addTo($app,$source=[]) {
+	public function addFrom($app,$source=[]) {
 		if(array_key_exists($app, $this->source_from_app)) {
 			$this->source_from_app[$app]=array_merge($source,$this->source_from_app[$app]);
 		}
@@ -20,6 +21,13 @@ Class Manager {
 			$this->source_from_app[$app]=$source;
 		}
 	}
+
+	public function importJs($js) {
+		for($i=0;$i<count($js);$i++) {
+			$this->js=$this->js."<script type='text/javascript' src='$js[$i]'></script>\n";
+		}
+	}
+
 	public function load() {
 		$readycss='';
 		$readyjs='';
@@ -42,7 +50,9 @@ Class Manager {
 				}
 			}
 		}
-		return $readycss."\n".$readyjs;
+		$this->css=$this->css.$readycss;
+		$this->js=$this->js.$readyjs;
+		return $this->css."\n".$this->js;
 	}
 }
 ?>
