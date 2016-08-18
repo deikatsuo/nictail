@@ -22,11 +22,10 @@ Abstract Class App {
 		$twig=$this->container->get('twig.environment');
 		$template=$this->config()['template'];
 
-		$this->container->get('twig.loader')->addPath($this->config()['path'].'/template',$this->current_app);
-
 		if($template == "blank.twig") {
 			return new Response($twig->render($template,$this->prepare('blank')));
 		}
+		$this->container->get('twig.loader')->addPath($this->config()['path'].'/template',$this->current_app);
 		return new Response($twig->render('@'.$this->current_app.'/'.$template,$this->prepare()));
 	}
 
