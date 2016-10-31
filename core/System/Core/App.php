@@ -15,7 +15,9 @@ Abstract Class App {
 
 	public function __construct() {
 		// ---
-		$this->current_app=end(explode('/',$this->config()['path']));
+		$app=explode('/',$this->config()['path']);
+		$app=end($app);
+		$this->current_app=$app;
 	}
 
 	public function show() {
