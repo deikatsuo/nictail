@@ -14,11 +14,11 @@ Class Core {
 	protected $matcher;
 	protected $resolver;
 	protected $container;
-
+	
 	public function __construct(ContainerBuilder $container) {
 		$this->container=$container;
 	}
-
+	
 	public function removeSlashEnd($path) {
 		$path=substr($path,0,-1);
 		if(substr($path,-1) == '/') {
@@ -26,7 +26,7 @@ Class Core {
 		}
 		return $path;
 	}
-
+	
 	public function handle(RouteCollection $routes, Request $request) {
 		$this->container->setParameter('routes',$routes);
 		$this->container->setParameter('template_dir',_root.'/template');
@@ -36,7 +36,7 @@ Class Core {
 		// handler
 		$this->matcher=$container->get('symfony.matcher');
 		$this->resolver=$container->get('symfony.resolver');
-
+		
 		$this->matcher->getContext()->fromRequest($request);
 		$path=$request->getPathInfo();
 		try {
@@ -53,7 +53,7 @@ Class Core {
             $key=array_keys($config);
             for($i=0;$i<count($key);$i++) {
 				if(array_key_exists($key[$i],$controller[0])) {
-					$controller[0]->{$key[$i]}=$config[$key[$i]];
+					$controller[0]->$key[$i]=$config[$key[$i]];
 				}
 			}
             return call_user_func_array($controller, $arguments);
