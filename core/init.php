@@ -2,6 +2,7 @@
 if(!_permision) {
 	exit;
 }
+
 include(_root."/vendor/autoload.php");
 
 use Symfony\Component\ClassLoader\ClassLoader;

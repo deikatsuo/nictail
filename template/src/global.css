@@ -1,5 +1,12 @@
 body {background-color: #F9F9F9 !important;}
-.navbar {background-color: #3498db !important;padding:5px;}
+.sidebar {border-right:1px solid #E5E5E5;}
+.navbar {background-color: #F9F9F9 !important;padding:5px;}
 .content {margin-top:40px;padding-bottom:50px !important;}
+
+/*Border */
+.border-top {border-top:1px solid #E5E5E5;}
+.border-right {border-right:1px solid #E5E5E5;}
+.border-bottom {border-bottom: 1px solid #E5E5E5;}
+.border-left {border-left:1px solid #E5E5E5;}
 
 #top_notification {margin-bottom: 0px !important;display:none;}

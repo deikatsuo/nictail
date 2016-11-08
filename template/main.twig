@@ -10,19 +10,23 @@
 </head>
 <body>
 	{% block body %}
-		{% block header %}
-			<header>
-			{% block navbar %}
-				{% include 'navbar.twig' %}
-			{% endblock %}
-			</header>
-		{% endblock %}
-		<div class="uk-container uk-container-center content">
-			<div class="uk-grid">
-				{% block left_menu %}
-					{% include 'left_menu.twig' %}
+		<div class="uk-grid  uk-grid-collapse">
+			<div class="uk-width-1-4 sidebar">
+				{% block sidebar %}
+					{% include 'sidebar.twig' %}
 				{% endblock %}
-				{% block content %}{% endblock %}
+			</div>
+			<div class="uk-width-3-4">
+				{% block header %}
+					<header>
+					{% block navbar %}
+						{% include 'navbar.twig' %}
+					{% endblock %}
+					</header>
+				{% endblock %}
+				<div class="uk-container">
+					{% block content %}{% endblock %}
+				</div>
 			</div>
 		</div>
 	{% endblock %}
