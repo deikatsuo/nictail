@@ -44,19 +44,19 @@ Class Core {
 				$path=$this->removeSlashEnd($path);
 			}
 			$request->attributes->add($this->matcher->match($path));
-            $controller = $this->resolver->getController($request);
-            $arguments = $this->resolver->getArguments($request, $controller);
+		            $controller = $this->resolver->getController($request);
+		            $arguments = $this->resolver->getArguments($request, $controller);
 
-            $config=[
+		            $config=[
 				'container'	=> $container,
-            ];
-            $key=array_keys($config);
-            for($i=0;$i<count($key);$i++) {
+		            ];
+		            $key=array_keys($config);
+		            for($i=0;$i<count($key);$i++) {
 				if(array_key_exists($key[$i],$controller[0])) {
 					$controller[0]->{$key[$i]}=$config[$key[$i]];
 				}
 			}
-            return call_user_func_array($controller, $arguments);
+            			return call_user_func_array($controller, $arguments);
 		}
 		catch (\Exception $e) {
 			$event=new PageEvent($e);

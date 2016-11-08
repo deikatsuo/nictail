@@ -10,8 +10,8 @@
 </head>
 <body>
 	{% block body %}
-		<div class="uk-grid  uk-grid-collapse">
-			<div class="uk-width-1-4 sidebar">
+		<div class="uk-grid  uk-grid-collapse" style="min-height:100vh;">
+			<div class="uk-width-1-4 border-right">
 				{% block sidebar %}
 					{% include 'sidebar.twig' %}
 				{% endblock %}
@@ -24,9 +24,7 @@
 					{% endblock %}
 					</header>
 				{% endblock %}
-				<div class="uk-container">
-					{% block content %}{% endblock %}
-				</div>
+				{% block content %}{% endblock %}
 			</div>
 		</div>
 	{% endblock %}

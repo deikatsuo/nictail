@@ -1,6 +1,12 @@
 body {background-color: #F9F9F9 !important;}
+
+/*Sidebar*/
 .sidebar {border-right:1px solid #E5E5E5;}
-.navbar {background-color: #F9F9F9 !important;padding:5px;}
+.nb-badges {position:relative;}
+.nb-badge {position:absolute;top:-5px;right:5px;}
+
+/*Navbar*/
+.navbar {background-color: #F9F9F9 !important;padding:5px;min-height:40px;}
 .content {margin-top:40px;padding-bottom:50px !important;}
 
 /*Border */
