@@ -11,12 +11,7 @@
 <body>
 	{% block body %}
 		<div class="uk-grid  uk-grid-collapse" style="min-height:100vh;">
-			<div class="uk-width-1-4 border-right">
-				{% block sidebar %}
-					{% include 'sidebar.twig' %}
-				{% endblock %}
-			</div>
-			<div class="uk-width-3-4">
+			<div class="uk-width-1-1">
 				{% block header %}
 					<header>
 					{% block navbar %}
@@ -24,7 +19,16 @@
 					{% endblock %}
 					</header>
 				{% endblock %}
-				{% block content %}{% endblock %}
+				<div class="uk-grid uk-grid-collapse">
+					<div class="uk-width-medium-1-4 uk-hidden-small">
+						{% block sidebar  %}
+							{% include 'sidebar.twig' %}
+						{% endblock %}
+					</div>
+					<div class="uk-width-medium-3-4 uk-width-small-1-1">
+						{% block content %}{% endblock %}
+					</div>
+				</div>
 			</div>
 		</div>
 	{% endblock %}

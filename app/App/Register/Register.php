@@ -28,7 +28,7 @@ Class Register Extends App {
 			'vCountryIso'	=> $vCountryIso
 		];
 		$this->container->get('app.asset-manager')->addFrom('Register',['register.css','register.js']);
-		$this->container->get('app.asset-manager')->add(['/uikit/css/components/datepicker.almost-flat.min.css','/uikit/js/components/datepicker.min.js']);
+		$this->container->get('app.asset-manager')->add(['/uikit/css/components/datepicker.gradient.min.css','/uikit/js/components/datepicker.min.js']);
 		//$this->container->get('app.asset-manager')->importJs(['https://www.google.com/recaptcha/api.js']);
 		return $this;
 	}

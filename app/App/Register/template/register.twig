@@ -1,5 +1,6 @@
 {% extends 'main.twig' %}
 {% block title %}{{ title }}{% endblock %}
+{% block navbar_menu %}sok{% endblock %}
 {% block content %}
 	<div class="uk-container" style="margin-top:70px;margin-bottom:50px;">
 	<div class="uk-grid uk-grid-collapse">
@@ -67,7 +68,7 @@
 						<div class="uk-width-1-1">
 							<div class="uk-form-icon fix-iconform">
 								<i class="uk-icon-calendar"></i>
-								<input type="text" placeholder="00-00-0000" class="uk-width-1-1" id="birthday" name="birthday" data-uk-datepicker="{format:'DD-MM-YYYY'}">
+								<input type="text" placeholder="00-00-0000" class="uk-width-1-1" id="birthday" name="birthday" data-uk-datepicker="{weekstart:0,format:'DD-MM-YYYY'}">
 							</div>
 						</div>
 					</div>

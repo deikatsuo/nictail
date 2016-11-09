@@ -6,7 +6,7 @@ body {background-color: #F9F9F9 !important;}
 .nb-badge {position:absolute;top:-5px;right:5px;}
 
 /*Navbar*/
-.navbar {background-color: #F9F9F9 !important;padding:5px;min-height:40px;}
+.navbar {background-color: #F9F9F9 !important;padding:5px;min-height:40px;border-radius: unset !important;}
 .content {margin-top:40px;padding-bottom:50px !important;}
 
 /*Border */
@@ -14,5 +14,6 @@ body {background-color: #F9F9F9 !important;}
 .border-right {border-right:1px solid #E5E5E5;}
 .border-bottom {border-bottom: 1px solid #E5E5E5;}
 .border-left {border-left:1px solid #E5E5E5;}
+.border-flat {border-radius:unset !important;}
 
 #top_notification {margin-bottom: 0px !important;display:none;}

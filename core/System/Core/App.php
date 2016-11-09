@@ -34,7 +34,7 @@ Abstract Class App {
 	# @Return array
 	private function prepare($blank="") {
 		if(empty($blank)) {
-			$this->container->get('app.asset-manager')->add(['global.css','/uikit/css/uikit.min.css','/uikit/css/components/sticky.min.css','jquery-2.2.3.min.js','/uikit/js/uikit.min.js','/uikit/js/components/sticky.min.js','global.js']);
+			$this->container->get('app.asset-manager')->add(['global.css','/uikit/css/uikit.gradient.min.css','/uikit/css/components/sticky.min.css','jquery-2.2.3.min.js','/uikit/js/uikit.min.js','/uikit/js/components/sticky.min.js','global.js']);
 
 			// Prepare
 			$render=[
