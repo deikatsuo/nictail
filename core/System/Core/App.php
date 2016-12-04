@@ -1,11 +1,12 @@
 <?php
 namespace System\Core;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use System\Core\AppContainer;
 
-
-Abstract Class App {
-	public $container=[];
+Abstract Class App   {
+	use AppContainer;
 	public $extends=[
 		'place_before_navbar_menu'			=> '',
 		'place_before_left_menu'			=> ''
@@ -18,12 +19,16 @@ Abstract Class App {
 		$app=explode('/',$this->config()['path']);
 		$app=end($app);
 		$this->current_app=$app;
+		return $this;
+	}
+
+	public function appExec($controller,$arguments){
+		return call_user_func_array($controller, $arguments);
 	}
 
 	public function show() {
 		$twig=$this->container->get('twig.environment');
 		$template=$this->config()['template'];
-
 		if($template == "blank.twig") {
 			return new Response($twig->render($template,$this->prepare('blank')));
 		}

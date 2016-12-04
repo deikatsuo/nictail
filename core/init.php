@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing;
 use Symfony\Component\HttpKernel;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use System\Core\Core;
 use System\Core\AppInit;
 
@@ -27,7 +28,7 @@ $coreAuto->addPrefixes($coreName);
 $coreAuto->register();
 
 $request=Request::createFromGlobals();
-$container = new ContainerBuilder();
+$container = new ContainerBuilder(new ParameterBag());
 $appInit=new AppInit($container, _root.'/app');
 $appInit->runServices();
 

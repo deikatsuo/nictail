@@ -1,6 +1,7 @@
 <?php
 namespace App\Register;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use System\Core\App;
 use System\Core\Country;
