@@ -1,21 +1,22 @@
 <?php
 namespace App\Register;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use System\Core\App;
 use System\Core\Country;
 Use GeoIp2\Database\Reader;
 
 Class Register Extends App {
-	public $render=[];
-	public $current_template='register.twig';
+	protected $render=[];
+	protected $current_template='register.twig';
+	protected $event='';
 
 	//-- Main Page --//
 	public function indexPage() {
+		$this->event='connect.app.register.load';
 		$vCountryIso="";
 		try {
-			$readIp=new Reader(_root."/GeoLite2-Country.mmdb");
+			$readIp=new Reader(__ROOT__."/GeoLite2-Country.mmdb");
 			$vCountry=$readIp->Country($_SERVER['REMOTE_ADDR']);
 			$vCountryIso=$vCountry->country->isoCode;
 		}
@@ -30,12 +31,13 @@ Class Register Extends App {
 		];
 		$this->container->get('app.asset-manager')->addFrom('Register',['register.css','register.js']);
 		$this->container->get('app.asset-manager')->add(['/uikit/css/components/datepicker.gradient.min.css','/uikit/js/components/datepicker.min.js']);
-		//$this->container->get('app.asset-manager')->importJs(['https://www.google.com/recaptcha/api.js']);
+		$this->container->get('app.asset-manager')->importJs(['https://www.google.com/recaptcha/api.js']);
 		return $this;
 	}
 
 	//-- Login Page --//
 	public function loginPage() {
+		$this->event='connect.app.register.login';
 		$this->current_template="login.twig";
 		$this->render=[
 			'title'			=> 'Masuk akun'
@@ -83,7 +85,9 @@ Class Register Extends App {
 	public function config() {
 		return [
 			'path'		=>	__DIR__,
-			'template'	=>	$this->current_template
+			'template'	=>	$this->current_template,
+			'event'		=>	$this->event,
+			'import'		=>	['Asset']
 		];
 	}
 

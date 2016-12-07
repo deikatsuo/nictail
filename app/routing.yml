@@ -1,0 +1,4 @@
+asset:
+    resource: "App/Asset/routes.yml"
+register:
+    resource: "App/Register/routes.yml"

@@ -1,0 +1,3 @@
+asset:
+    path: /asset
+    defaults: { _controller: 'App\Asset\Asset::indexPage' }

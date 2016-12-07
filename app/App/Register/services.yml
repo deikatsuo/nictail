@@ -1,0 +1,6 @@
+#imports:
+ #   - { resource: "../Asset/services.yml" }
+
+services:
+    app.register-process:
+        class: App\Register\Process

@@ -10,5 +10,8 @@ trait AppContainer {
 		$this->container=$container;
 		return $this;
 	}
+	public function tClean() {
+		$this->container="";
+	}
 }
 ?>

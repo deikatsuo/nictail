@@ -1,21 +1,26 @@
 <?php
-if(!_permision) {
+if(!__PERMISSION__) {
 	exit;
 }
 
-include(_root."/vendor/autoload.php");
+include(__ROOT__."/vendor/autoload.php");
 
 use Symfony\Component\ClassLoader\ClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing;
 use Symfony\Component\HttpKernel;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader as ServicesLoader;
+use Symfony\Component\Routing\Loader\YamlFileLoader as RoutesLoader;
+use System\Core\EventGrabber;
 use System\Core\Core;
-use System\Core\AppInit;
+use System\Core\DisMod;
 
-$coreDir=_root.'/core';
-$appDir=_root.'/app';
+$coreDir=__ROOT__.'/core';
+$appDir=__ROOT__.'/app';
 $coreAuto=new ClassLoader();
 $coreAuto->setUseIncludePath(true);
 //Daftarkan Core disini
@@ -27,12 +32,29 @@ $coreName=[
 $coreAuto->addPrefixes($coreName);
 $coreAuto->register();
 
+//Create request
 $request=Request::createFromGlobals();
-$container = new ContainerBuilder(new ParameterBag());
-$appInit=new AppInit($container, _root.'/app');
-$appInit->runServices();
 
-$app=new Core($container);
-$handle=$app->handle($appInit->getRoutes(), $request);
+#Container  | All Services stored here
+$container = new ContainerBuilder(new ParameterBag());
+$system_services_loader=new ServicesLoader($container,new FileLocator(__ROOT__.'/app'));
+$system_services_loader->load('services.yml');
+
+//Event Dispatcher
+$dispatcher=$container->get('symfony.dispatcher');
+$dispatcher->addListener('connect.app.register.login', function ($event){
+	//test
+});
+
+$routes=new RoutesLoader(new FileLocator(__ROOT__.'/app'));
+$routes=$routes->load('routing.yml');
+
+//Dispatch event
+$container->get('symfony.dispatcher')->dispatch('connect.system.routingload',new EventGrabber(new DisMod($routes)));
+
+$app=new Core($container, $dispatcher);
+
+$handle=$app->handle($routes, $request);
 $handle->show()->send();
+
 ?>

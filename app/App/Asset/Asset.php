@@ -13,9 +13,9 @@ Class Asset Extends App {
 	public function indexPage(Request $request) {
 		$this->app=ucfirst($request->query->get('app'));
 		$this->file_name=$request->query->get('source');
-		$this->path=_root.'/template/src';
+		$this->path=__ROOT__.'/template/src';
 		if(!empty($this->app)) {
-			$this->path=_root.'/app/App/'.$this->app.'/template/src';
+			$this->path=__ROOT__.'/app/App/'.$this->app.'/template/src';
 		}
 		if(strrchr($this->file_name, '.') == '.css') {
 			header("Content-type: text/css");

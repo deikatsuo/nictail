@@ -1,0 +1,13 @@
+register:
+    path: /register
+    defaults: { _controller: 'App\Register\Register::indexPage' }
+login:
+    path: /register/login
+    defaults: { _controller: 'App\Register\Register::loginPage'}
+forgot:
+    path: /register/forgot
+    defaults: { _controller: 'App\Register\Register::forgotPage'}
+process:
+    path: /register/process
+    defaults:
+        _controller: 'App\Register\Register::processPage'
