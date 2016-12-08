@@ -53,7 +53,7 @@ Class Core {
 		      	$controller = $this->resolver->getController($request);
 		         	$arguments = $this->resolver->getArguments($request, $controller);
 
-		         	#load services from application
+		         	#import services from application
 		         	$app=$controller[0]->getAppName();
 		         	$app_services_loader=new YamlFileLoader($this->container,new FileLocator(__ROOT__.'/app/App/'.$app));
 		         	$app_services_loader->load('services.yml');

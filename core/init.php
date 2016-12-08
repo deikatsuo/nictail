@@ -42,19 +42,19 @@ $system_services_loader->load('services.yml');
 
 //Event Dispatcher
 $dispatcher=$container->get('symfony.dispatcher');
-$dispatcher->addListener('connect.app.register.login', function ($event){
-	//test
+$dispatcher->addListener('connect.system.routing.load', function ($event){
+	$e=$event->getResponse()->response();
 });
 
 $routes=new RoutesLoader(new FileLocator(__ROOT__.'/app'));
-$routes=$routes->load('routing.yml');
+
+$routes=new DisMod($routes->load('routing.yml'));
 
 //Dispatch event
-$container->get('symfony.dispatcher')->dispatch('connect.system.routingload',new EventGrabber(new DisMod($routes)));
+$container->get('symfony.dispatcher')->dispatch('connect.system.routing.load',new EventGrabber($routes));
 
 $app=new Core($container, $dispatcher);
-
-$handle=$app->handle($routes, $request);
+$handle=$app->handle($routes->response(), $request);
 $handle->show()->send();
 
 ?>
