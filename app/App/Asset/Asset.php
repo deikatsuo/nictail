@@ -10,7 +10,9 @@ Class Asset Extends App {
 	protected $file_name;
 	protected $content;
 	protected $current_template='blank.twig';
+	protected $event='';
 	public function indexPage(Request $request) {
+		$this->event='connect.app.asset.index';
 		$this->app=ucfirst($request->query->get('app'));
 		$this->file_name=$request->query->get('source');
 		$this->path=__ROOT__.'/template/src';
@@ -41,7 +43,8 @@ Class Asset Extends App {
 	public function config() {
 		return [
 			'path'		=>	__DIR__,
-			'template'	=>	$this->current_template
+			'template'	=>	$this->current_template,
+			'event'		=>	$this->event
 		];
 	}
 

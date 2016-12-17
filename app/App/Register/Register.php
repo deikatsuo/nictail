@@ -13,7 +13,7 @@ Class Register Extends App {
 
 	//-- Main Page --//
 	public function indexPage() {
-		$this->event='connect.app.register.load';
+		$this->event='connect.app.register.index';
 		$vCountryIso="";
 		try {
 			$readIp=new Reader(__ROOT__."/GeoLite2-Country.mmdb");
@@ -27,7 +27,7 @@ Class Register Extends App {
 		$this->render=[
 			'title'			=> 'Daftar akun baru',
 			'country'		=> new \System\Core\Country(),
-			'vCountryIso'	=> $vCountryIso
+			'vCountryIso'		=> $vCountryIso
 		];
 		$this->container->get('app.asset-manager')->addFrom('Register',['register.css','register.js']);
 		$this->container->get('app.asset-manager')->add(['/uikit/css/components/datepicker.gradient.min.css','/uikit/js/components/datepicker.min.js']);

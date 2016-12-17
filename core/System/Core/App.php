@@ -9,10 +9,7 @@ use System\Core\DisMod;
 
 Abstract Class App   {
 	use AppContainer;
-	public $extends=[
-		'place_before_navbar_menu'			=> '',
-		'place_before_left_menu'			=> ''
-	];
+
 	protected $current_app;
 	protected $render_merge=[];
 
@@ -49,7 +46,7 @@ Abstract Class App   {
 				'head_asset'	=>	$this->container->get('app.asset-manager')->load()
 			];
 
-			$render=array_merge($this->extends,$render,$this->render);
+			$render=array_merge($render,$this->render);
 
 			$render=new DisMod($render);
 			
@@ -59,7 +56,11 @@ Abstract Class App   {
 			return $render->response();
 		}
 
-		return $this->render;
+		$render=new DisMod($this->render);
+		//Dispatch Event
+		$this->container->get('symfony.dispatcher')->dispatch($this->config()['event'], new EventGrabber($render));
+
+		return $render->response();
 	}
 
 	public function getAppName() {

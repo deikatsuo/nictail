@@ -3,6 +3,7 @@ namespace System\Core;
 
 Class DisMod {
 	protected $response=[];
+	protected $bag=[];
 	public function __construct($response) {
 		$this->response=$response;
 		return $this;
