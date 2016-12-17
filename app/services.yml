@@ -1,5 +1,10 @@
 # App Services
 services:
+    #System
+    core.dbase:
+        class: System\Core\DBase
+
+    #Symfony
     symfony.context:
         class: Symfony\Component\Routing\RequestContext
     symfony.dispatcher:
@@ -13,6 +18,8 @@ services:
         class: Symfony\Component\Finder\Finder
     symfony.filesystem:
         class: Symfony\Component\Filesystem\Filesystem
+
+    #Twig
     twig.loader:
         class: Twig_Loader_Filesystem
         arguments: ['%template_dir%']
