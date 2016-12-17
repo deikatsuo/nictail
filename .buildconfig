@@ -1,7 +1,0 @@
-[default]
-name=Default
-device=local
-runtime=host
-config-opts=
-prefix=/home/deri/.cache/gnome-builder/install/htdocs/host
-default=true

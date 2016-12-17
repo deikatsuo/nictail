@@ -1,7 +1,0 @@
-routes:
-    asset:
-        path: /asset
-        defaults: { _controller: 'App\Asset\Asset::indexPage' }
-services:
-    app.asset-manager:
-        class: App\Asset\Manager
